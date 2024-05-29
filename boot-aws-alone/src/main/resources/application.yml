@@ -19,3 +19,9 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
+
+## 머스태치 + 스프링 부트 3.7xx 한글깨짐 방지
+server:                       
+  servlet:
+    encoding:
+      force-response: true 

@@ -5,15 +5,18 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class User extends BaseTimeEntity {
+@Table(name = "users")
+public class User extends BaseTimeEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column(nullable = false)
     private String name;
@@ -29,16 +32,22 @@ public class User extends BaseTimeEntity {
     private Role role;
 
     @Builder
-    public User(String name, String email, String picture, Role role) {
+    public User(String id, String name, String email, String picture, Role role) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.picture = picture;
         this.role = role;
     }
 
+
     public User update(String name, String picture) {
         this.name = name;
         this.picture = picture;
         return this;
+    }
+
+    public String getRoleKey() {
+        return this.role.getKey();
     }
 }

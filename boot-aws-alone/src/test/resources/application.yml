@@ -1,11 +1,4 @@
 spring:
-  profiles:
-    include: oauth
-
-  session:
-    store-type: jdbc
-    jdbc:
-      initialize-schema: always
 
   datasource:
     driver-class-name: org.h2.Driver
@@ -24,10 +17,14 @@ spring:
         # show_sql: true
         format_sql: true
 
-
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test
+            client-secret: test
+            scope: profile, email
 
 logging.level:
-  org:hibernate.SQL: debug
-
-  org.springframework: info
-
+  org.hibernate.SQL: debug

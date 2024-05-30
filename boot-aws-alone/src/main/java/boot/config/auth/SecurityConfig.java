@@ -1,8 +1,11 @@
 package boot.config.auth;
 
 import boot.domain.user.Role;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
@@ -10,9 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
  *  이로 인해 @Bean 으로 등록하는
  *  SecurityFilterChain filterChain(HttpSecurity http) 구현 필요
  * */
+@RequiredArgsConstructor
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
-
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -38,7 +44,7 @@ public class SecurityConfig {
         http
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
-                                .userService(costomOAuth2UserService)));
+                                .userService(customOAuth2UserService)));
 
         return http.build();
     }

@@ -1,4 +1,4 @@
-package boot.config.auth.dto;
+package boot.config.auth.old.dto;
 
 import boot.domain.user.Role;
 import boot.domain.user.User;

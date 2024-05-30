@@ -1,5 +1,7 @@
 package boot.web;
 
+import boot.config.auth.LoginUser;
+import boot.config.auth.dto.SessionUser;
 import boot.service.posts.PostsService;
 import boot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,13 @@ public class IndexController {
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
+
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
     }
 

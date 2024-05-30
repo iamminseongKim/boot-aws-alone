@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
-<th:block layout:fragment="content">
+      th:replace="~{layout/layout :: layout (~{::title}, ~{::section})}">
+
+<head>
+    <title>게시글 수정</title>
+</head>
 <body>
+<section>
     <h1>게시글 수정</h1>
     <div class="col-md-12">
         <div class="col-md-4">
@@ -31,6 +34,6 @@
         </div>
 
     </div>
+</section>
 </body>
-</th:block>
 </html>

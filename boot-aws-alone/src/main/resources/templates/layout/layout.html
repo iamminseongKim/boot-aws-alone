@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:fragment="layout (title, content)">
+<head>
+    <title th:replace="${title}">레이아웃 타이틀</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
 
-<th:block th:replace="/layout/header :: header"></th:block>
 
 <body>
-    <th:block layout:fragment="content"></th:block>
+    <div th:replace="${content}"></div>
 </body>
 
-<th:block th:replace="/layout/footer :: footer"></th:block>
+<footer th:replace="~{layout/footer :: footer}">푸터자리</footer>
 </html>

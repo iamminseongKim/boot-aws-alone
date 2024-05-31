@@ -3,15 +3,23 @@ package boot.config.auth.dto;
 import boot.domain.user.Role;
 import boot.domain.user.User;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 
+@Slf4j
 public class NaverResponse implements OAuth2Response {
 
     private final Map<String, Object> attributes;
 
     public NaverResponse(Map<String, Object> attributes) {
         this.attributes = (Map<String, Object>) attributes.get("response");
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        attributes.put("response", "naver");
+        return attributes;
     }
 
     @Override
@@ -50,8 +58,5 @@ public class NaverResponse implements OAuth2Response {
                 .build();
     }
 
-    @Override
-    public Map<String, Object> getAttributes() {
-        return this.attributes;
-    }
+
 }

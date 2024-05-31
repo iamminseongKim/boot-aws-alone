@@ -5,15 +5,13 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User extends BaseTimeEntity implements Serializable {
+public class User extends BaseTimeEntity {
 
     @Id
     private String id;

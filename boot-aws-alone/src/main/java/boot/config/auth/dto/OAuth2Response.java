@@ -11,4 +11,6 @@ public interface OAuth2Response {
     String getName();
     String getProfile();
     User toEntity();
+
+    Map<String, Object> getAttributes();
 }

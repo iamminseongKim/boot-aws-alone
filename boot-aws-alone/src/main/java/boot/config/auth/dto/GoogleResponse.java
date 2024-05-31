@@ -2,6 +2,7 @@ package boot.config.auth.dto;
 
 import boot.domain.user.Role;
 import boot.domain.user.User;
+import lombok.Getter;
 
 import java.util.Map;
 
@@ -47,5 +48,10 @@ public class GoogleResponse implements OAuth2Response{
                 .picture(attributes.get("picture").toString())
                 .role(Role.GUEST)
                 .build();
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return this.attributes;
     }
 }

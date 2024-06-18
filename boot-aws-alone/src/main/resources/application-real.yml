@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    include: oauth,real-db
+
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        # show_sql: true
+        format_sql: true
+
+
+
+logging.level:
+  org:hibernate.SQL: debug
+
+  org.springframework: info
+

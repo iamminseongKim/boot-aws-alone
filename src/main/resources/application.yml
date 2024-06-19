@@ -2,6 +2,9 @@ spring:
   profiles:
     include: oauth
 
+  pid:
+    file: /home/ec2-user/app/step2/boot-aws-alone.pid
+
   session:
     store-type: jdbc
     jdbc:

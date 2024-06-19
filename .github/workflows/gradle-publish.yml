@@ -33,9 +33,9 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Grant execute permission for gradlew
-      run: chmod +x boot-aws-alone/gradlew
+      run: chmod +x ./gradlew
       shell: bash
     
     - name: Build with Gradle
-      run: boot-aws-alone/gradlew clean build -x test
+      run: ./gradlew clean build -x test
       shell: bash

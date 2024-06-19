@@ -48,4 +48,4 @@ jobs:
         utcOffset: "+09:00"
 
     - name: Show Current Time
-      run: echo "CurrentTime=${{step.current-time.outputs.formattedTime}}"
+      run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"

@@ -31,7 +31,7 @@ class ProfileControllerUnitTest {
     @Test
     void real_profile이_없으면_첫_번째가_조회된다() {
         //given
-        String expectedProfile = "outh2";
+        String expectedProfile = "oauth2";
         MockEnvironment env = new MockEnvironment();
 
         env.addActiveProfile(expectedProfile);
